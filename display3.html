@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./adminpage.css">
+    <title>Document</title>
+    <style>
+        tr,th,td{
+            border: 1px solid white;
+            padding: 10px;
+            color: white;
+        
+
+        }
+    </style>
+</head>
+<body style="background: linear-gradient(90deg, #c966b7 0%, rgba(75,14,154,1) 35%, rgba(0,212,255,1) 100%);" onload="func()">   
+
+<center>
+    <table id="result" style="padding: 10px;">
+
+    </table></center>
+
+
+    <script>
+        // API for get requests
+        function func(){
+    fetch('http://localhost:5000/get3',{
+            mode:'cors',
+            method:'POST',
+            headers:{
+                'Content-type':'application/json'
+            }
+        
+        })
+        .then((e)=>{
+            
+            return e.json()  
+        })
+        .then(async(e1)=>
+        {  
+            let t=""
+            if(e1.length!=0)
+            {
+                t+= ` <tr><th>NAME</th><th>Morning Diet and Workout</th><th>Afternoon Diet and workout</th><th>Evening Diet and Workout</th><th>Night Diet and Workout</th><th>Time</th></tr>`
+                for(i of e1)
+                {
+                    t+= `<tr><td>${i.name}</td><td>${i.mrg}</td><td>${i.aft}</td><td>${i.eve}</td><td>${i.nig}</td><td>${i.time}</td></tr>`
+                }
+                
+                document.getElementById('result').innerHTML=t;
+            }})}
+    </script>
+</body>
+</html>

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Feedback Form</title>
+    <meta name="viewport" content="width=device-width,
+      initial-scale=1.0"/>
+    <!-- <link rel="stylesheet" href="style.css" /> -->
+
+   
+
+    <style>
+
+/* tr,th,td{
+            border: 1px solid black;
+            padding: 10px;
+            color: black;
+
+        } */
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body{
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background: url(bg-image.jpg);
+    background-size: cover;
+    background: linear-gradient(90deg, #c966b7 0%, rgba(75,14,154,1) 35%, rgba(0,212,255,1) 100%);
+}
+
+.container{
+    width: 100%;
+    max-width: 650px;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 28px;
+    margin: 0 28px;
+    border-radius: 10px;
+    box-shadow: inset -2px 2px 2px white;
+}
+
+.form-title{
+    font-size: 26px;
+    font-weight: 600;
+    text-align: center;
+    padding-bottom: 6px;
+    color: white;
+    text-shadow: 2px 2px 2px black;
+    border-bottom: solid 1px white;
+}
+
+.main-user-info{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px 0;
+}
+
+.user-input-box:nth-child(2n){
+    justify-content: end;
+}
+
+.user-input-box{
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
+    padding-bottom: 15px;
+}
+
+.user-input-box label{
+    width: 95%;
+    color: white;
+    font-size: 20px;
+    font-weight: 400;
+    margin: 5px 0;
+}
+
+.user-input-box input{
+    height: 40px;
+    width: 95%;
+    border-radius: 7px;
+    outline: none;
+    border: 1px solid grey;
+    padding: 0 10px;
+}
+
+
+.form-submit-btn{
+    margin-top: 40px;
+}
+
+.form-submit-btn input{
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+    font-size: 20px;
+    padding: 10px;
+    border:none;
+    border-radius: 3px;
+    color: rgb(209, 209, 209);
+    background: rgba(63, 114, 76, 0.7);
+}
+
+.form-submit-btn input:hover{
+    background: rgba(56, 204, 93, 0.7);
+    color: rgb(255, 255, 255);
+}
+
+@media(max-width: 600px){
+    .container{
+        min-width: 280px;
+    }
+
+    .user-input-box{
+        margin-bottom: 12px;
+        width: 100%;
+    }
+
+    .user-input-box:nth-child(2n){
+        justify-content: space-between;
+    }
+
+  
+
+    .main-user-info{
+        max-height: 380px;
+        overflow: auto;
+    }
+
+    .main-user-info::-webkit-scrollbar{
+        width: 0;
+    }
+}
+
+
+    </style>
+  </head>
+  <body >
+    <form>
+    <div class="container">
+      <h1 class="form-title">Feedback</h1>
+      <form>
+        <div class="main-user-info">
+          <div class="user-input-box">
+            <label for="fullName">First Name</label>
+            <input type="text"
+                    id="fname"
+                    name="fullName"
+                    placeholder="Enter First Name" required/>
+          </div>
+          <div class="user-input-box">
+            <label for="username">Last Name</label>
+            <input type="text"
+                    id="lname"
+                    name="username"
+                    placeholder="Enter Last Name"required/>
+          </div>
+          <div class="user-input-box">
+            <label for="email">Email</label>
+            <input type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Enter Email"required/>
+          </div>
+
+
+          <!-- <br> <br>
+          <input type="file" id="image" name="image" style="margin-left: 1cm;background-color: rgba(0,0,0,0);border-style: none;font-size: large" required onchange="validateSize(this)"><br><br> -->
+
+          <br><br><br>
+          
+          <div class="user-input-box">
+            <label for="password">Feedback</label>
+            <input type="text"
+                    id="feed"
+                    name="password"
+                    placeholder="Enter Feedback"required/>
+          </div>
+
+
+
+         
+          <!-- <div class="user-input-box">
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password"
+                    id="confirmPassword"
+                    name="confirmPassword"
+                    placeholder="Confirm Password"/>
+          </div> -->
+        </div>
+      <br><br>
+        <div class="form-submit-btn">
+          <input type="submit" id="b1">
+        </div>
+      </form>
+    </div>
+</form>
+  </body>
+
+  <script>
+    function validateSize(input) {
+const fileSize = input.files[0].size / 1024 / 1024; // in MiB
+if (fileSize > 2) {
+  alert('File size exceeds 2 MB');
+  document.getElementById('image').value= null;
+  // $(file).val(''); //for clearing with Jquery
+} else {
+  // Proceed further
+
+}
+}
+ 
+      
+    
+  </script> 
+<script>
+    const add=document.querySelector("#b1");
+    
+add.addEventListener("click",async()=>{
+ const n1=String(document.querySelector("#fname").value);
+ const n2=String(document.querySelector("#lname").value);
+ const n3=String(document.querySelector("#email").value);
+ 
+
+
+ const n7=String(document.querySelector("#feed").value);
+ 
+ if(!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(n3)){
+    alert("Invalid Email");
+ }
+ else{
+   
+
+ fetch('http://localhost:5000/insert2',{
+            mode:'cors',
+            method:'POST',
+            headers:{
+                'Content-type':'application/json'
+            },
+            body:JSON.stringify({
+                fname:n1,
+                lname:n2,
+                email:n3,
+               
+                feed:n7,
+            })
+        })
+        .then(async(e)=>{
+            alert("LOGIN SUCCESSFULL");
+            
+        })
+        .catch(async()=>{
+            console.log("ERROR");
+            result.innerHTML="ERROR";
+        })
+}})
+</script>
+
+
+<!-- <center>
+    <table id="result" style="padding: 10px;">
+
+    </table></center>
+
+
+    <script>
+        // API for get requests
+        let fetchRes = fetch(
+"http://localhost:5000/get2");
+        // fetchRes is the promise to resolve
+        // it by using.then() method
+        fetchRes.then(async data => {
+                var d = await data.json()
+                console.log(d)
+                var temp = ' <tr><th>FIRST NAME</th><th>LAST NAME</th><th>EMAIL</th><th>GENDER</th><th>FEEDBACK</th></tr>'
+                for(i of d)
+                {
+                    temp = temp + '<tr><td>'+i.fname+'</td><td>'+i.lname+'</td><td>'+i.email+'</td><td>'+i.gen+'</td><td>'+i.feed+'</td></tr>'
+                }
+                
+                document.getElementById('result').innerHTML=temp;
+            })
+    </script> -->
+
+</html>

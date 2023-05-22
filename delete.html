@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <h3>Enter the Mrg Food:</h3>
+        <input type="text" id="mrg">
+        <input type="submit" id="b1">
+    </form>
+</body>
+
+<script>
+    const add=document.querySelector("#b1");
+    
+add.addEventListener("click",async()=>{
+ const n1=String(document.querySelector("#mrg").value);
+
+
+ fetch('http://localhost:5000/delete',{
+            mode:'cors',
+            method:'POST',
+            headers:{
+                'Content-type':'application/json'
+            },
+            body:JSON.stringify({
+                mrg:n1,
+               
+            })
+        })
+        .then(async(e)=>{
+           // alert("LOGIN SUCCESSFULL");
+            
+        })
+        .catch(async()=>{
+            console.log("ERROR");
+            result.innerHTML="ERROR";
+        })
+})
+</script>
+
+</html>
